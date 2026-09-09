@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "flomo 速记",
+  "version": "0.1.0",
+  "description": "基于 flomo 网页版 API 的速记与浏览扩展（本地加载调试，未上架）",
+
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "sidePanel",
+    "commands",
+    "alarms",
+    "notifications"
+  ],
+
+  "host_permissions": ["https://flomoapp.com/*"],
+
+  "background": {
+    "service_worker": "src/background/index.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_title": "flomo 速记",
+    "default_popup": "src/ui/popup.html"
+  },
+
+  "side_panel": {
+    "default_path": "src/ui/sidepanel.html"
+  },
+
+  "options_ui": {
+    "page": "src/ui/options.html",
+    "open_in_tab": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/index.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "打开 flomo 速记"
+    }
+  }
+}

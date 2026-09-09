@@ -1,0 +1,15 @@
+{
+  "name": "flomo-extension-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "description": "flomo 浏览器扩展开发工作区（测试依赖：jsdom）",
+  "scripts": {
+    "test": "node tests-real/run-all.mjs",
+    "test:unit": "node --test flomo-extension/tests/unit",
+    "contract:sync": "node flomo-extension/tools/sync-contract.mjs",
+    "verify:api": "node flomo-extension/tools/verify-api.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}
